@@ -1,19 +1,18 @@
 #!/bin/sh
-cd `dirname $0`
+# Package the module as a source tarball.
+#
+# This is a pure-Python module, so it uploads with `--platform any`: pip resolves
+# the right wheels on the target machine when setup.sh runs there. That avoids
+# cross-compiling a PyInstaller binary for every board architecture.
+cd "$(dirname "$0")" || exit 1
 
-# Create a virtual environment to run our code
-VENV_NAME="venv"
-PYTHON="$VENV_NAME/bin/python"
+rm -rf dist
+mkdir -p dist
 
-if ! $PYTHON -m pip install pyinstaller -Uqq; then
-    exit 1
-fi
+tar -czf dist/archive.tar.gz \
+    --exclude='__pycache__' \
+    --exclude='*.pyc' \
+    meta.json requirements.txt setup.sh run.sh src
 
-$PYTHON -m PyInstaller --onefile --collect-all viam --hidden-import="googleapiclient" src/main.py
-
-TAR_FILES="meta.json ./dist/main"
-FIRST_RUN=$($PYTHON -c "import json; print(json.load(open('meta.json')).get('first_run', ''))" 2>/dev/null)
-if [ -n "$FIRST_RUN" ] && [ -f "$FIRST_RUN" ]; then
-    TAR_FILES="$TAR_FILES $FIRST_RUN"
-fi
-tar -czvf dist/archive.tar.gz $TAR_FILES
+echo "built dist/archive.tar.gz:"
+tar -tzf dist/archive.tar.gz
