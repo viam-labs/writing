@@ -1,0 +1,13 @@
+{
+  "module_name": "writer",
+  "visibility": "public",
+  "namespace": "chess-piece-detection",
+  "language": "python",
+  "resource_type": "service",
+  "resource_subtype": "generic",
+  "model_name": "writer-coordinator",
+  "initialize_git": false,
+  "generator_version": "0.1.0",
+  "generated_on": "2026-08-05T16:37:45.279725Z",
+  "module_readme_link": "README.md"
+}
