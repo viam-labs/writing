@@ -2,3 +2,5 @@
 viam-sdk==0.80.0
 
 typing-extensions
+
+Hershey-Fonts==2.1.0
