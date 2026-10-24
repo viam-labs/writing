@@ -11,7 +11,9 @@ class WriterCoordinator(Generic, EasyResource):
     MODEL: ClassVar[Model] = "chess-piece-detection:writer:writer-coordinator"
 
     @classmethod
-    def new(cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
+    def new(
+        cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+    ) -> Self:
         """This method creates a new instance of this generic.
         The default implementation sets the name from the `config` parameter.
 
@@ -25,7 +27,9 @@ class WriterCoordinator(Generic, EasyResource):
         return super().new(config, dependencies)
 
     @classmethod
-    def validate_config(cls, config: ComponentConfig) -> Tuple[Sequence[str], Sequence[str]]:
+    def validate_config(
+        cls, config: ComponentConfig
+    ) -> Tuple[Sequence[str], Sequence[str]]:
         """This method allows you to validate the configuration object received from the machine,
         as well as to return any required dependencies or optional dependencies based on that `config`.
 
