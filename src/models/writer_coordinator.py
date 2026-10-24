@@ -7,7 +7,7 @@ from viam.proto.common import ResourceName
 from viam.resource.base import ResourceBase
 from viam.resource.easy_resource import EasyResource
 from viam.resource.types import Model, ModelFamily
-from viam.services.generic import *
+from viam.services.generic import Generic
 from viam.utils import ValueTypes
 
 
