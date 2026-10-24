@@ -1,9 +1,10 @@
-from typing import ClassVar, Mapping, Sequence, Self, Tuple
+from typing import ClassVar, Mapping, Self, Sequence, Tuple
+
 from viam.proto.app.robot import ComponentConfig
 from viam.proto.common import ResourceName
 from viam.resource.base import ResourceBase
 from viam.resource.easy_resource import EasyResource
-from viam.resource.types import Model, ModelFamily
+from viam.resource.types import Model
 from viam.services.generic import Generic
 
 
