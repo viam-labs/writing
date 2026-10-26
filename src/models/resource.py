@@ -1,9 +1,10 @@
-from typing import ClassVar, Mapping, Sequence, Self, Tuple
+from typing import ClassVar, Mapping, Self, Sequence, Tuple
+
 from viam.proto.app.robot import ComponentConfig
 from viam.proto.common import ResourceName
 from viam.resource.base import ResourceBase
 from viam.resource.easy_resource import EasyResource
-from viam.resource.types import Model, ModelFamily
+from viam.resource.types import Model
 from viam.services.generic import Generic
 
 
@@ -11,7 +12,9 @@ class WriterCoordinator(Generic, EasyResource):
     MODEL: ClassVar[Model] = "chess-piece-detection:writer:writer-coordinator"
 
     @classmethod
-    def new(cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
+    def new(
+        cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+    ) -> Self:
         """This method creates a new instance of this generic.
         The default implementation sets the name from the `config` parameter.
 
@@ -25,7 +28,9 @@ class WriterCoordinator(Generic, EasyResource):
         return super().new(config, dependencies)
 
     @classmethod
-    def validate_config(cls, config: ComponentConfig) -> Tuple[Sequence[str], Sequence[str]]:
+    def validate_config(
+        cls, config: ComponentConfig
+    ) -> Tuple[Sequence[str], Sequence[str]]:
         """This method allows you to validate the configuration object received from the machine,
         as well as to return any required dependencies or optional dependencies based on that `config`.
 
